@@ -1,0 +1,32 @@
+# Exclude everything by default
+/*
+
+# Add git stuff
+!/.gitignore
+!/.gitattributes
+
+# Standard files
+!/Makefile
+!/README*
+!/LICENSE*
+!/NEWS*
+!/INSTALL*
+!/TODO*
+
+# Add main init lisp
+!/init.el
+
+# Add directories
+!/site-lisp/
+!/settings/
+!/themes/
+!/snippets/
+!/schemas/
+
+# Add eschell/alias only, still ignore the rest
+!/eshell/
+/eshell/*
+!/eshell/alias
+
+# Ignore byte compiled lisp
+*.elc
