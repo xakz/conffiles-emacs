@@ -1,0 +1,15 @@
+# name: class ... { ... }
+# expand-env: ((class-name (file-name-sans-extension (file-name-nondirectory (buffer-file-name)))))
+# --
+/**
+ * Class description here.
+ */
+public class `class-name` $1{
+
+  /**
+   * Constructor.
+   */
+  public `class-name`() {
+    $0
+  }
+}

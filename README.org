@@ -1,0 +1,56 @@
+#+STARTUP: showall
+
+* My Emacs ugly and perpetually evolving configuration.
+
+This repository is not aimed to be distribuable, it's a backup, but maybe some
+chunk of text can be inspiring for someone ;-)
+
+And this text file is mainly a reminder for me, not a ready-to-be-printed
+documentaition :p
+
+* Notable keybindings
+
+|-------------------------------------+--------------------------------------------------------------------|
+| General                             |                                                                    |
+|-------------------------------------+--------------------------------------------------------------------|
+| <f8> <f8>                           | magit                                                              |
+| C-c p g                             | projectile find file dwim                                          |
+|-------------------------------------+--------------------------------------------------------------------|
+| programming modes - C/C++           |                                                                    |
+|-------------------------------------+--------------------------------------------------------------------|
+| M-i                                 | imenu (idomenu)                                                    |
+| M-o                                 | cycle through overloaded funcs (for C++ its function-args overlay) |
+| M-j                                 | function-args jump to definition (uses semantic)                   |
+| C-c , ,                             | semantic reparse buffer                                            |
+| C-c d                               | Documentation about thing at point                                 |
+|-------------------------------------+--------------------------------------------------------------------|
+|                                     |                                                                    |
+|-------------------------------------+--------------------------------------------------------------------|
+
+* forgiven features
+** .ede-ignore
+EDE will ignore this directory
+
+** .ede_stop_scan
+EDE do not scan directories upward.
+
+** EDEConfig.el
+hold a ede-generic-config (see [[file:/usr/share/emacs/24.5/lisp/cedet/ede/generic.el.gz::;;%20Link%20things%20together.][cedet/ede/generic.el]] )
+
+** semantic-c-describe-environment
+** semantic-decoration-all-include-summary
+
+** .projectile
+define a project root using projectile
+Can be used to add ignores
+[[https://github.com/bbatsov/projectile#ignoring-files]]
+
+** .dir-locals.el
+[[http://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html]]
+
+** prefix arg (not really forgiven but rarelly used)
+C-u 8 cmd => (cmd 8)
+C-u 666 cmd => (cmd 666)
+M-7 cmd => (cmd 7) ;; work for M-1 to M-9
+C-u cmd => (cmd 4)
+C-u C-u cmd => (cmd 16)

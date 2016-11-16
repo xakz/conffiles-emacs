@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: shebang
+# key: she
+# binding: C-c y s
+# --
+#!/bin/$0sh

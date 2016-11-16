@@ -1,0 +1,13 @@
+# name: Boilerplate header for snippet
+# contributor: Maxime Chatelle <xakz@rxsoft.eu>
+# --
+# name: $0
+# key: <triggering word>
+# binding: C-c C-whatever (when yas-prefix "string if C-u prefixed")
+# type: <snippet> or <command> if <command> the body is evaluated lisp, default is <snippet>
+# condition: () trigger only if non nil
+# group: group.sub group.sub sub group
+# expand-env: (()) Some variables...
+# uuid: unique uuid
+# contributor: `user-full-name` <`user-mail-address`>
+# --

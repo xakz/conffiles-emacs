@@ -1,0 +1,9 @@
+# name : once (Header Guard)
+# expand-env: ((guard-name (concat (upcase (replace-regexp-in-string "[^A-Za-z0-9_]" "_" (file-name-nondirectory (buffer-file-name)))) "_INCLUDED") ))
+# --
+#ifndef ${1:NAMESPACE}_`guard-name`
+#define $1_`guard-name` 1
+
+$0
+
+#endif /* $1_`guard-name` */

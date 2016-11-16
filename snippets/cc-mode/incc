@@ -1,0 +1,3 @@
+#name : #include <std c header>
+# --
+#include <${1:$$(yas-choose-value (list "stdio.h" "stddef.h" "stdlib.h" "string.h" "ctype.h" "time.h" "math.h" "limits.h" "assert.h" "errno.h" "float.h" "stdarg.h" "signal.h" "setjmp.h" "locale.h" "--NA1-1995--" "wchar.h" "wctype.h" "iso646.h" "--C99--" "stdint.h" "stdbool.h" "inttypes.h" "fenv.h" "complex.h" "tgmath.h" "--C11--" "uchar.h" "threads.h" "stdatomic.h" "stdalign.h" "stdnoreturn.h" "--GNU--" "getopt.h"))}$0>

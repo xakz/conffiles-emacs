@@ -1,0 +1,13 @@
+# name: html5 page skeleton
+# key: page
+# --
+<!DOCTYPE html>
+<html lang="${1:en}">
+  <head>
+    <meta charset="utf-8" />
+    <title>$2</title>
+  </head>
+  <body>
+    $0
+  </body>
+</html>

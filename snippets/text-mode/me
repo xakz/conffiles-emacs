@@ -1,0 +1,3 @@
+#name : user name and email address
+# --
+`(print (concat user-full-name " <" user-mail-address ">"))`$0

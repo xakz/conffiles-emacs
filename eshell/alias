@@ -1,0 +1,9 @@
+alias d dired $1
+alias ff find-file $1
+alias e find-file $1
+alias ce calc-eval $1
+alias lla ls -lha
+alias ll ls -lh
+alias s cd ..
+alias l ls
+alias la ls -a

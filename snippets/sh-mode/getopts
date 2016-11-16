@@ -1,0 +1,10 @@
+# name: while getopts ...
+# --
+while getopts 'h' opt; do
+    case "$opt" in
+	h) usage; exit 0;;
+	?|*) exit 1;;
+    esac
+done
+shift \$(($OPTIND -1))
+$0

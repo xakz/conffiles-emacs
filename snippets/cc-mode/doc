@@ -1,0 +1,12 @@
+# name: /** .... */ insert javadoc/doxygen/phpdocumentor comment block
+# --
+/**
+ * $0
+ *
+ * Long Description TODO
+ *
+ * @param 
+ *
+ * @author `user-full-name` <`user-mail-address`>
+ * @since 
+ */

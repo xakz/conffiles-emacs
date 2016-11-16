@@ -1,0 +1,10 @@
+# name: switch
+# --
+switch ($0) {
+       case :
+		;
+       break;
+       default:
+		;
+       break;
+}

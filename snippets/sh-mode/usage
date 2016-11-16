@@ -1,0 +1,9 @@
+# name: usage function
+# --
+usage() {
+    echo "$(basename \$0) [OPTIONS] PARAMS..."
+    echo
+    echo "Options:"
+    echo " -h			This help."
+    echo$0
+}

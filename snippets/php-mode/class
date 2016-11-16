@@ -1,0 +1,8 @@
+#name : class
+# --
+class ${1:`(replace-regexp-in-string "[^A-Za-z0-9_]" "_" (file-name-sans-extension (file-name-nondirectory (buffer-file-name))))`} {
+
+	public function __construct() {
+		$0
+	}
+}

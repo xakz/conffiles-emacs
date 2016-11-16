@@ -1,0 +1,3 @@
+#name: #define MACRO
+# --
+#define ${1:$$(upcase yas-text)} $0

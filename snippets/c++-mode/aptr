@@ -1,0 +1,3 @@
+# name: std::auto_ptr<...> ...(new ...);
+# --
+std::auto_ptr<$1> $0(new $1());
