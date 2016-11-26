@@ -103,9 +103,9 @@
 (add-to-list 'default-frame-alist '(cursor-color . "#880000"))
 (add-to-list 'default-frame-alist '(mouse-color . "OrangeRed"))
 
-;; (set-frame-font "-*-fixed-medium-*-*-*-*-200-*-*-*-*-iso10646-*")
-;; (add-to-list 'initial-frame-alist '(font . "-*-fixed-medium-*-*-*-*-200-*-*-*-*-iso10646-*"))
-;; (add-to-list 'default-frame-alist '(font . "-*-fixed-medium-*-*-*-*-200-*-*-*-*-iso10646-*"))
+(set-frame-font "-*-fixed-medium-*-*-*-*-140-*-*-*-*-iso10646-*")
+(add-to-list 'initial-frame-alist '(font . "-*-fixed-medium-*-*-*-*-140-*-*-*-*-iso10646-*"))
+(add-to-list 'default-frame-alist '(font . "-*-fixed-medium-*-*-*-*-140-*-*-*-*-iso10646-*"))
 
 
 
@@ -723,6 +723,28 @@
   :diminish guide-key-mode
   )
 
+(defun neotree-project-root-dir-or-current-dir ()
+  "Open NeoTree using the project root, using projectile, or the
+current buffer directory."
+  (interactive)
+  (let ((project-dir (ignore-errors (projectile-project-root)))
+        (file-name (buffer-file-name))
+        (neo-smart-open t))
+    (if (neo-global--window-exists-p)
+        (neotree-hide)
+      (progn
+        (neotree-show)
+        (if project-dir
+            (neotree-dir project-dir))
+        (if file-name
+            (neotree-find file-name))))))
+
+(use-package neotree
+  :init
+  (setq neo-theme "ascii")
+  (setq neo-smart-open t)
+  :bind (("<f1>" . neotree-project-root-dir-or-current-dir))
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;     Language specific packages     ;;;
