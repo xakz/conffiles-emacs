@@ -374,7 +374,7 @@
   (global-semantic-idle-scheduler-mode 1)
   (global-semantic-idle-summary-mode 1)
   (global-semantic-stickyfunc-mode 1)
-  (global-semantic-show-unmatched-syntax-mode 1)
+  (global-semantic-show-unmatched-syntax-mode -1)
   ;;(global-semantic-idle-completions-mode 1) ; Disabled because we use company
   ;;(global-semantic-decoration-mode 1)       ; dont like too much decoration
   ;;(global-semantic-highlight-func-mode 1)   ; same
@@ -775,8 +775,8 @@ current buffer directory."
 (setq scss-compile-at-save nil)
 
 ;; TODO php-mode
-(setq php-mode-coding-style "WordPress")
-(add-hook 'php-mode-hook 'column-enforce-n120)
+(setq php-mode-coding-style "Symfony2")
+;(add-hook 'php-mode-hook 'column-enforce-n120)
 
 ;; Preprocessor directive indentation
 (use-package ppindent
@@ -930,6 +930,22 @@ current buffer directory."
                               (company-mode 1)))
     )
   )
+
+;;;;;;;;;; Web scrap ;;;;;;;;;;;;;;
+(use-package xah-css-mode
+  :mode ("\\.css\\'" . xah-css-mode)
+  :config
+  (use-package css-eldoc
+    :config (css-eldoc-enable)
+    )
+  )
+
+(use-package js2-mode
+  :mode ("\\.js\\'" . js2-mode)
+  :config
+  (setq js2-strict-trailing-comma-warning nil)
+  )
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;   Mail handling   ;;;
