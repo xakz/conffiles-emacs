@@ -109,14 +109,14 @@
 ;;(global-set-key (kbd "M-<prior>") 'scroll-other-window-down)
 ;;(global-set-key (kbd "M-<next>") 'scroll-other-window)
 
-;;(global-set-key (kbd "C-S-<prior>") 'nil)
-;;(global-set-key (kbd "C-S-<next>") 'nil)
+(global-set-key (kbd "C-M-<prior>") (lambda () (interactive) (scroll-down-command 1)))
+(global-set-key (kbd "C-M-<next>") (lambda () (interactive) (scroll-up-command 1)))
 
 ;;(global-set-key (kbd "M-S-<prior>") 'nil)
 ;;(global-set-key (kbd "M-S-<next>") 'nil)
 
-;;(global-set-key (kbd "C-M-<prior>") 'nil)
-;;(global-set-key (kbd "C-M-<next>") 'nil)
+;;(global-set-key (kbd "C-S-<prior>") 'nil)
+;;(global-set-key (kbd "C-S-<next>") 'nil)
 
 ;;(global-set-key (kbd "C-M-S-<prior>") 'nil)
 ;;(global-set-key (kbd "C-M-S-<next>") 'nil)
@@ -272,6 +272,8 @@
 
 (global-set-key (kbd "H-c") 'delete-window)
 (global-set-key (kbd "M-c") 'delete-window)
+
+(global-set-key (kbd "H-s") 'ispell-word)
 
 ;; switch buffer other window
 (global-set-key (kbd "H-C-b") 'switch-to-buffer-other-window)
