@@ -274,6 +274,7 @@
 (global-set-key (kbd "M-c") 'delete-window)
 
 (global-set-key (kbd "H-s") 'ispell-word)
+(global-set-key (kbd "M-s") 'ispell-word)
 
 ;; switch buffer other window
 (global-set-key (kbd "H-C-b") 'switch-to-buffer-other-window)

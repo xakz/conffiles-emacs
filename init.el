@@ -475,7 +475,7 @@
 ;; Project management
 (use-package projectile
   :defer 1
-  :bind (("M-s" . projectile-switch-to-buffer)
+  :bind (("C-p" . projectile-switch-to-buffer)
          ("H-M-s" . projectile-switch-to-buffer-other-window))
   :config
   (setq projectile-project-root-files
@@ -534,6 +534,8 @@
   (setq ido-use-filename-at-point nil)
   (setq ido-use-url-at-point nil)
   (setq ido-use-virtual-buffers t)
+  ;; disable searching in other directories entirely
+  (setq ido-auto-merge-work-directories-length -1)
   (setq ido-save-directory-list-file (my-emacs-dir "ido.last"))
   (ido-mode 1)
 
@@ -976,7 +978,8 @@ current buffer directory."
 
 ;; The custom file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+(if (file-exists-p custom-file)
+    (load custom-file))
 
 ;; Always load that for handling from external programs
 (use-package org-protocol
