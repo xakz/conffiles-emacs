@@ -526,6 +526,13 @@
   :bind ("<f8> <f8>" . magit-status)
   )
 
+;; gist.el (https://github.com/defunkt/gist.el)
+(use-package gist
+  :config
+  (setq gist-ask-for-description t)
+  (setq gist-ask-for-filename t)
+  )
+
 ;; Ido
 (use-package ido
   :config
