@@ -533,6 +533,49 @@
   (setq gist-ask-for-filename t)
   )
 
+;; Search engine directly from Emacs
+(use-package engine-mode
+  :defer 3
+  :config
+  (engine-mode 1)
+  ;; For example, suppose we want to be able to easily search GitHub:
+  (defengine github
+    "https://github.com/search?ref=simplesearch&q=%s"
+    :keybinding "h")
+
+  ;; This defines an interactive function `engine/search-github'. When
+  ;; executed it will take the selected region (or prompt for input, if
+  ;; no region is selected) and search GitHub for it, displaying the
+  ;; results in your default browser.
+
+  ;; The `defengine' macro can also take an optional key combination,
+  ;; prefixed with "C-x /":
+  (defengine duckduckgo
+    "https://duckduckgo.com/?q=%s"
+    :keybinding "d")
+  ;; `C-x / d' is now bound to the new function
+  ;; engine/search-duckduckgo'! Nifty.
+
+  (defengine google
+    "https://google.com/?q=%s"
+    :keybinding "g")
+
+  (defengine wikipedia
+    "https://en.wikipedia.org/w/index.php?search=%s"
+    :keybinding "w")
+  )
+
+;; Display emoji
+(use-package emojify
+  :defer 4
+  :config
+  (global-emojify-mode)
+  :bind
+  (
+   ("<f8> e" . emojify-insert-emoji)
+   )
+  )
+
 ;; Ido
 (use-package ido
   :config
@@ -710,7 +753,7 @@
   :config
   ;; Set prefix key that fire guide-key
   ;; Can be set by mode
-  (setq guide-key/guide-key-sequence '("<f1>" "<f2>" "<f3>" "<f4>" "<f5>" "<f6>" "<f7>" "<f8>" "<f9>" "<f10>" "<f11>" "C-x r" "C-c" "M-s"
+  (setq guide-key/guide-key-sequence '("<f1>" "<f2>" "<f3>" "<f4>" "<f5>" "<f6>" "<f7>" "<f8>" "<f9>" "<f10>" "<f11>" "C-x r" "C-c" "M-s" "C-x /"
                                        ;;(foo-mode . "prefix key")
                                        ))
   (setq guide-key/popup-window-position 'right)
