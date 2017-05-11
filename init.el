@@ -315,7 +315,8 @@
 ;; Use X clipboard
 (setq x-select-enable-clipboard t)
 
-
+;; Use C-z, C-x, C-c, C-v to undo, cut, copy, paste
+(cua-mode 1)
 
 
 
