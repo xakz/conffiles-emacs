@@ -328,7 +328,15 @@
 ;;(ede-cpp-root-project "emacs.d"
 ;;(ede-enable-generic-projects)
 
-
+(if (file-exists-p "~/projects/cocos-helloworld/CMakeLists.txt")
+    (ede-cpp-root-project "cocos-helloworld"
+                          :name "Cocos Helloworld"
+                          :file "~/projects/cocos-helloworld/CMakeLists.txt"
+                          :system-include-path '("/usr/include"
+                                                 "/usr/include/boost")
+                          :include-path '("/Classes"
+                                          "/cocos2d/cocos")
+                          :spp-table '(("BOOST_PROGRAM_OPTIONS_DECL" . ""))))
 
 ;; (defun MY-FILE-FOR-DIR (&optional dir)
 ;;   "Return a full file name to the project file stored in DIR."
@@ -487,6 +495,21 @@
 
   )
 
+(setq rx-cc-guess-include-path-candidates
+      '(
+        ("cocos2d/cocos/cocos2d.h" "cocos2d/cocos")
+        ("Classes")
+        ("include")
+        ))
+
+(defun rx-cc-guess-include-paths ()
+  "Guess include paths"
+  (let ((root (projectile-project-root)))
+    (mapcar (lambda (i) (concat root i))
+            (mapcar (lambda (i) (if (cadr i) (cadr i) (car i)))
+                    (seq-filter (lambda (i) (file-exists-p (concat root (car i))))
+                                rx-cc-guess-include-path-candidates)))))
+
 ;; Completion
 (use-package company
   :defer 1
@@ -499,6 +522,9 @@
   (setq company-echo-delay 0)      ; remove annoying blinking
   (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
   (add-to-list 'company-backends 'company-jedi)
+  ;;(push 'company-clang company-backends)
+  ;;(delete 'company-semantic company-backends)
+  ;;(setq company-clang-arguments (mapcar (lambda (i) (concat "-I" i)) (rx-cc-guess-include-paths)))
   (global-company-mode 1)
   )
 
@@ -526,6 +552,11 @@
 (use-package magit
   :defer 17
   :bind ("<f8> <f8>" . magit-status)
+  :config
+  (use-package magit-gitflow
+    :config
+    (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+    )
   )
 
 ;; gist.el (https://github.com/defunkt/gist.el)
@@ -636,6 +667,11 @@
 (use-package make-regexp
   :commands (make-regexp make-regexps)
   )
+
+;; smart whitespace deletion
+(use-package smart-hungry-delete
+  :bind (("<backspace>" . smart-hungry-delete-backward-char)
+		 ("C-d" . smart-hungry-delete-forward-char)))
 
 ;; better grep (apt-get install silversearch-ag)
 (use-package ag
@@ -904,10 +940,24 @@ current buffer directory."
   (add-to-list 'auto-mode-alist '("\\.mutt/" . muttrc-mode) 'append)
 )
 
-;; The C* mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;; The C-like modes machinery
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; (use-package irony
+;;   :commands (irony-mode)
+;;   :config
+;;   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+;;   )
+
 (use-package cc-mode
   :demand
   :config
+
+  ;; (add-hook 'c++-mode-hook 'irony-mode)
+  ;; (add-hook 'c-mode-hook 'irony-mode)
+  ;; (add-hook 'objc-mode-hook 'irony-mode)
+  
 
   ;; Adds more C/C++ styles if installed.
   (use-package cc-mode-styles
@@ -962,6 +1012,8 @@ current buffer directory."
     (fa-config-default)
     )
   )
+
+
 
 (use-package go-mode
   :mode ("\\.go\\'" . go-mode)
