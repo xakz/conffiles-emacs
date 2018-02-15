@@ -1,0 +1,16 @@
+#name : Singleton class ... { ... }
+#key : class
+# --
+class ${1:`(replace-regexp-in-string "[^A-Za-z0-9_]" "_" (file-name-sans-extension (file-name-nondirectory (buffer-file-name))))`}$0 {
+public:
+  static $1 & getInstance() {
+    static $1 instance;
+    return instance;
+  }
+  $1(const $1 &) = delete;
+  $1(const $1 &&) = delete;
+  $1 & operator =(const $1 &) = delete;
+  $1 & operator =(const $1 &&) = delete;
+private:
+  $1();
+};

@@ -1,13 +1,9 @@
-#name : Normal class ... { ... }
+#name : Simple class ... { ... }
 #key : class
 # --
 class ${1:`(replace-regexp-in-string "[^A-Za-z0-9_]" "_" (file-name-sans-extension (file-name-nondirectory (buffer-file-name))))`}$0 {
 public:
   $1();
-  $1(const $1 &);
-  $1(const $1 &&);
-  $1 & operator =(const $1 &);
-  $1 & operator =(const $1 &&);
   virtual ~$1();
 private:
 
