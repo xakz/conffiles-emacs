@@ -1,0 +1,8 @@
+#name : Copy constructors...
+#key : copyctor
+# --
+ ${1:`(replace-regexp-in-string "[^A-Za-z0-9_]" "_" (file-name-sans-extension (file-name-nondirectory (buffer-file-name))))`}(const $1 &);
+  $1(const $1 &&);
+  $1 & operator =(const $1 &);
+  $1 & operator =(const $1 &&);
+$0
