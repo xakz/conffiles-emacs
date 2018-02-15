@@ -45,6 +45,10 @@
 ;;(global-set-key (kbd "<f11>") 'nil)
 (global-set-key (kbd "<f12>") 'sx-toggle-shell-buffer)
 
+(global-set-key (kbd "M-r") 'ff-find-other-file)
+(global-set-key (kbd "M-;") 'smart-comment)
+
+
 
 
 ;;;;;;;;;;;;;;;;;;
