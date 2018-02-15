@@ -578,6 +578,17 @@
   (setq gist-ask-for-filename t)
   )
 
+;; Some very usefull changes in default behavior
+(use-package crux
+  :bind (("C-k" . crux-smart-kill-line)
+         ("C-a" . crux-move-beginning-of-line)
+         ("<f8> C" . crux-cleanup-buffer-or-region)
+         ("<f8> D" . crux-delete-file-and-buffer)
+         ("<f8> R" . crux-rename-file-and-buffer)
+         ("<f8> O" . crux-open-with)
+         )
+  )
+
 ;; Search engine directly from Emacs
 (use-package engine-mode
   :defer 3
