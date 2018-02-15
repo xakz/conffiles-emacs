@@ -559,6 +559,18 @@
     )
   )
 
+;; highlight by commit age
+(use-package smeargle
+  :bind (("<f8> g" . smeargle-commits)
+         ("<f8> h" . smeargle-clear))
+  )
+
+;; tooltip with commit message for current line
+(use-package git-messenger
+  :bind ("<f8> m" . git-messenger:popup-message)
+  )
+
+
 ;; gist.el (https://github.com/defunkt/gist.el)
 (use-package gist
   :config
