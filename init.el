@@ -515,6 +515,9 @@
   :defer 1
   :diminish company-mode
   :config
+  (use-package company-flx
+    :config (company-flx-mode +1)
+    )
   (setq company-etags-ignore-case t)
   (setq company-show-numbers t)
   (setq company-tooltip-limit 20)  ; bigger popup window
@@ -522,6 +525,7 @@
   (setq company-echo-delay 0)      ; remove annoying blinking
   (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
   (add-to-list 'company-backends 'company-jedi)
+  (add-to-list 'company-backends 'company-racer)
   ;;(push 'company-clang company-backends)
   ;;(delete 'company-semantic company-backends)
   ;;(setq company-clang-arguments (mapcar (lambda (i) (concat "-I" i)) (rx-cc-guess-include-paths)))
@@ -853,10 +857,13 @@ current buffer directory."
             (neotree-find file-name))))))
 
 (use-package neotree
+  :defer 0
   :init
   (setq neo-theme "ascii")
   (setq neo-smart-open t)
-  :bind (("<f1>" . neotree-project-root-dir-or-current-dir))
+  :config
+  (setq projectile-switch-project-action 'neotree-projectile-action)
+  :bind (("<f2>" . neotree-project-root-dir-or-current-dir))
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -914,6 +921,19 @@ current buffer directory."
   :mode ("\\.rb\\'" "[Rr]akefile\\'" "\\.rk\\'" "\\.gemspec\\'")
   :interpreter "ruby"
   )
+
+;; Rust
+(use-package rust-mode
+  :mode ("\\.rs\\'")
+  :config
+  (use-package racer
+    :bind (("<f1>" . racer-describe))
+    :config
+    (add-hook 'rust-mode-hook #'racer-mode)
+    (add-hook 'racer-mode-hook #'eldoc-mode)
+    )
+  )
+
 
 ;; cperl has more features and can make eldoc available for perl. Does not use
 ;; use-package because it make Emacs buggy (Not understanding why)
