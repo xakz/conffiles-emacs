@@ -1,0 +1,5 @@
+# name: #[macro_use]
+# key: mexp
+# --
+#[macro_export]
+$0

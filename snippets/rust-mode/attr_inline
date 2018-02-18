@@ -1,0 +1,5 @@
+# name: #[inline]
+# key: inl
+# --
+#[inline]
+$0

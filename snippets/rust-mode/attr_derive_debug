@@ -1,0 +1,5 @@
+# name: #[derive(Debug)]
+# key: der
+# --
+#[derive(Debug)]
+$0

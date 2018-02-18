@@ -1,0 +1,5 @@
+# name: #[macro_use]
+# key: muse
+# --
+#[macro_use]
+$0

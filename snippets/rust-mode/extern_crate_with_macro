@@ -1,0 +1,5 @@
+# name: extern crate ... (with #[macro_use])
+# key: mcrate
+# --
+#[macro_use]
+extern crate $0;

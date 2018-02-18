@@ -1,0 +1,4 @@
+# name: extern crate ...
+# key: crate
+# --
+extern crate $0;

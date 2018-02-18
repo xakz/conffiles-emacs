@@ -1,0 +1,5 @@
+# name: #[derive(All known in std::)]
+# key: der
+# --
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Clone, Copy, Hash, Default)]
+$0
