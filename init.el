@@ -634,6 +634,7 @@
   (
    ("<f8> e" . emojify-insert-emoji)
    )
+  :disabled
   )
 
 ;; Ido
